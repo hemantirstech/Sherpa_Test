@@ -1,0 +1,325 @@
+<div class="container-fluid">
+  <app-page-title title="{{ pageTitle }}" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <form [formGroup]="leadForm" (ngSubmit)="submitData()" novalidate>
+    <div class="row">
+      <div class="col-xl-7">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title mb-4">Personal Details</h4>
+
+                <div class="form-group mb-4">
+                  <label>Name</label>
+                  <input
+                    name="name"
+                    formControlName="name"
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                    placeholder="Name"
+                  />
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Mobile Number</label>
+                      <input
+                        formControlName="contactNo"
+                        name="contactNo"
+                        type="text"
+                        class="form-control"
+                        minlength="10"
+                        maxlength="10"
+                        placeholder="+91 9098769977"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Alternet Mobile Number</label>
+                      <input
+                        formControlName="alternateMobile"
+                        name="alternateMobile"
+                        type="text"
+                        class="form-control"
+                        minlength="10"
+                        maxlength="10"
+                        placeholder="+91 9098769977"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Email Id</label>
+                      <input
+                        formControlName="email"
+                        name="email"
+                        type="email"
+                        class="form-control"
+                        placeholder="abc@gmail.com"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Designation</label>
+                      <select class="form-control" formControlName="designation" name="designation">
+                        <option selected value="0">Select Designation</option>
+                        <option value="1">Research Analyst</option>
+                        <option value="2">Research Manager</option>
+                        <option value="3">Key Account Manager</option>
+                        <option value="4">Sub PnL Head</option>
+                        <option value="5">PnL Head</option>
+                        <option value="6">CEO</option>
+                      </select>
+                      <!-- <input
+                          formControlName="designation"
+                          name="designation"
+                          type="text"
+                          class="form-control"
+                          placeholder="#123 456 789"
+                        /> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Address Line 1</label>
+                      <input
+                        formControlName="addressLine1"
+                        name="addressLine1"
+                        type="text"
+                        class="form-control"
+                        placeholder="addressLine1"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Address Line 2</label>
+                      <input
+                        formControlName="addressLine2"
+                        name="addressLine2"
+                        type="text"
+                        class="form-control"
+                        placeholder="addressLine2"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>City</label>
+                      <input
+                        formControlName="city"
+                        name="city"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter City"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>State</label>
+                      <input
+                        formControlName="state"
+                        name="state"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter State"
+                      />
+                      <!-- <select class="form-control" formControlName="state" name="state">
+                          <option hidden [value]="" selected>Select State</option>
+                          <option *ngFor="let state of stateArray" value="{{ state }}">{{ state }}</option>
+                        </select> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Country</label>
+                      <input
+                        formControlName="country"
+                        name="country"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Country"
+                      />
+                      <!-- <select class="form-control" formControlName="contry" name="contry">
+                          <option hidden [value]="" selected>Select Country</option>
+                          <option *ngFor="let country of coutryArray" value="{{ country.name }}">{{
+                            country.name
+                          }}</option>
+                        </select> -->
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Pin code</label>
+                      <input
+                        formControlName="zipCode"
+                        name="zipCode"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Pin code"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Status</label>
+                      <select class="form-control" formControlName="status" name="status">
+                        <option selected value="actice">Active</option>
+                        <option value="inactive">Inactive</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>type</label>
+                      <select class="form-control" formControlName="type" name="type">
+                        <option selected value="fulltime">Full Time</option>
+                        <option value="consultant">Consultant</option>
+                      </select>
+
+                      <!-- <input
+                          formControlName="type"
+                          name="type"
+                          type="text"
+                          class="form-control"
+                          placeholder="type"
+                        /> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5">
+        <div class="row">
+          <div class="col-xl-12 mb-4">
+            <button type="button" (click)="cancelForm()" class="btn btn-warning pl-5 pr-5">Cancel</button>
+            <button type="submit" class="btn btn-primary pl-5 pr-5 ml-3">Save</button>
+          </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title mb-4">Account Details</h4>
+
+                <div class="form-group mb-4">
+                  <label>Aadhar Card No.</label>
+                  <div class="row">
+                    <div class="col-12">
+                      <input
+                        formControlName="aadharCardNo"
+                        name="aadharCardNo"
+                        type="text"
+                        class="form-control"
+                        placeholder="Aadhar Card No."
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>PAN card No</label>
+                      <input formControlName="pan" name="pan" type="text" class="form-control" placeholder="PAN No" />
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Account Type</label>
+                      <input
+                        formControlName="accType"
+                        name="accType"
+                        type="text"
+                        class="form-control"
+                        placeholder="Account Type"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group mb-4">
+                      <label>Account Number</label>
+                      <input
+                        formControlName="accNumber"
+                        name="accNumber"
+                        type="text"
+                        class="form-control"
+                        placeholder="Account Number"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Bank Name</label>
+                      <input
+                        formControlName="bankName"
+                        name="bankName"
+                        type="text"
+                        class="form-control"
+                        placeholder="Bank Name"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Branch Name</label>
+                      <input
+                        formControlName="branchName"
+                        name="branchName"
+                        type="text"
+                        class="form-control"
+                        placeholder="Branch"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>IFSC Code</label>
+                      <input
+                        formControlName="ifscCode"
+                        name="ifscCode"
+                        type="text"
+                        class="form-control"
+                        placeholder="IFSC Code"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-4">
+                      <label>Shift Code</label>
+                      <input
+                        formControlName="shiftCode"
+                        name="shiftCode"
+                        type="text"
+                        class="form-control"
+                        placeholder="Branch"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

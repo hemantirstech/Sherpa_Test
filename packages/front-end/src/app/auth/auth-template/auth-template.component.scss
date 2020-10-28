@@ -1,0 +1,26 @@
+.auth-template {
+  color: #ffffff !important;
+}
+.full-height {
+  height: 100vh;
+}
+.temp-bg {
+  padding: 0;
+}
+.img-bk {
+  background-image: url("../../../assets/images/login-bk.jpg");
+  background-color: #0466c8;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.overlay-fade {
+  background-color: rgb(4 102 200 / 0.9);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}

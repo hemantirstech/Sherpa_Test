@@ -1,0 +1,355 @@
+<div class="container-fluid lead-details">
+  <!-- start page title -->
+  <app-page-title title="LEAD DETAILS" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <!-- end page title -->
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="media">
+                <div *ngIf="salesLeadContact.name !== undefined" class="rounded-circle avatar-sm initial-img">
+                  {{ getNameInitials(salesLeadContact.name) }}
+                </div>
+
+                <div class="media-body overflow-hidden ml-3">
+                  <h5 class="text-truncate font-size-15">{{ salesLeadContact.name }}</h5>
+                  <p class="text-muted">{{ salesLeadContact.designation }}, {{ salesLeadData.companyName }}</p>
+                </div>
+                <div class="overflow-hidden ml-auto">
+                  <div class="text-muted text-right">Sales Owner</div>
+                  <div class="d-flex align-items-center">
+                    <img alt="" class="rounded-circle avatar-xs" src="assets/images/users/avatar-2.jpg" />
+                    <div *ngIf="salesLeadData.assigneeId !== undefined" class="ml-4 font-weight-bold">
+                      {{ getUserName(salesLeadData.assigneeId) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h5 class="font-size-15 mt-4">Description or Notes</h5>
+              <p class="text-muted">
+                {{ salesLeadContact.notes }}
+              </p>
+
+              <div class="row mt-4">
+                <div class="col-md-6">
+                  <h6 class="text-muted">Designation</h6>
+                  <h6>{{ salesLeadContact.designation }}</h6>
+                </div>
+                <div class="col-md-6">
+                  <h6 class="text-muted">Email Id</h6>
+                  <h6>
+                    <a href="javascript: void(0);">{{ salesLeadContact.primaryEmail }}</a>
+                  </h6>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <h6 class="text-muted">Contact Number</h6>
+                  <h6>
+                    <a href="javascript: void(0);">{{ salesLeadContact.mobileNumber }}</a>
+                  </h6>
+                </div>
+                <div class="col-md-6">
+                  <h6 class="text-muted">Alternate Number</h6>
+                  <h6>
+                    <a href="javascript: void(0);">{{ salesLeadContact.alternateNumber }}</a>
+                  </h6>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <h6 class="text-muted">Company</h6>
+                  <h6>{{ salesLeadData.companyName }}</h6>
+                </div>
+                <div class="col-md-6">
+                  <h6 class="text-muted">Company Type</h6>
+                  <h6 *ngIf="salesLeadData.companyType !== undefined">
+                    {{ getCompanyType(salesLeadData.companyType) }}
+                  </h6>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <h6 class="text-muted">Address</h6>
+                  <h6>{{ salesLeadData.address }}</h6>
+                </div>
+                <div class="col-md-6">
+                  <h6 class="text-muted">Time Zone</h6>
+                  <h6>{{ salesLeadData.timeZone }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body pb-2">
+              <ul ngbNav #customNav="ngbNav" [activeId]="1" class="nav-tabs nav-tabs-custom">
+                <li [ngbNavItem]="1">
+                  <a ngbNavLink class="no-bgc">
+                    <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                    <span class="d-none d-sm-block">Comments</span>
+                  </a>
+                  <ng-template ngbNavContent>
+                    <ng-template [ngTemplateOutlet]="Comments"></ng-template>
+                  </ng-template>
+                </li>
+                <li [ngbNavItem]="2">
+                  <a ngbNavLink class="no-bgc">
+                    <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                    <span class="d-none d-sm-block">Activities</span>
+                  </a>
+                  <ng-template ngbNavContent>
+                    <ng-template [ngTemplateOutlet]="Activities"></ng-template>
+                  </ng-template>
+                </li>
+                <li [ngbNavItem]="3">
+                  <a ngbNavLink class="no-bgc">
+                    <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                    <span class="d-none d-sm-block">Attachments</span>
+                  </a>
+                  <ng-template ngbNavContent>
+                    <ng-template [ngTemplateOutlet]="Attachments"></ng-template>
+                  </ng-template>
+                </li>
+                <li [ngbNavItem]="4">
+                  <a ngbNavLink class="no-bgc">
+                    <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                    <span class="d-none d-sm-block">Incentives</span>
+                  </a>
+                  <ng-template ngbNavContent>
+                    <ng-template [ngTemplateOutlet]="Incentives"></ng-template>
+                  </ng-template>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="customNav"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end col -->
+
+    <div class="col-lg-4">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="mb-2 d-flex justify-content-between">
+            <button type="button" class="flex-fill m-2 btn btn-sm btn-outline-secondary">
+              <i class="mdi mdi-email-outline font-size-16 align-middle"></i> Send Email
+            </button>
+            <button type="button" class="flex-fill m-2 btn btn-sm btn-outline-secondary">
+              <i class="mdi mdi-arrow-decision font-size-16 align-middle"></i> Clone
+            </button>
+            <button
+              type="button"
+              [routerLink]="'/sales/update-lead/' + id.toString()"
+              class="flex-fill m-2 btn btn-sm btn-outline-secondary"
+            >
+              <i class="mdi mdi-pencil font-size-16 align-middle"></i> Edit
+            </button>
+            <!-- <button type="button" class="flex-fill m-2 btn btn-sm btn-outline-secondary">
+              <i (click)="deleteLead()" class="mdi mdi-close font-size-16 align-middle"></i> Delete
+            </button> -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title mb-4">Lead Details</h4>
+              <div class="mt-3">
+                <div class="text-muted">Stage</div>
+                <div class="d-flex flex-row mt-1">
+                  <div style="flex: 1;" (click)="changeLeadStatus(1)">
+                    <ngb-progressbar
+                      [value]="100"
+                      [type]="salesLeadData.leadStatus >= 1 ? 'dark' : 'light'"
+                      height="0.5rem"
+                    ></ngb-progressbar>
+                    <div class="mt-2">Contacted</div>
+                  </div>
+                  <div class="ml-3" style="flex: 1;" (click)="changeLeadStatus(2)">
+                    <ngb-progressbar
+                      [value]="100"
+                      [type]="salesLeadData.leadStatus >= 2 ? 'yellow' : 'light'"
+                      height="0.5rem"
+                    ></ngb-progressbar>
+                    <div class="mt-2">Interested</div>
+                  </div>
+                  <div class="ml-3" style="flex: 1;" (click)="changeLeadStatus(3)">
+                    <ngb-progressbar
+                      [value]="100"
+                      [type]="salesLeadData.leadStatus >= 3 ? 'warning' : 'light'"
+                      height="0.5rem"
+                    ></ngb-progressbar>
+                    <div class="mt-2">In Progress</div>
+                  </div>
+                  <div class="ml-3" style="flex: 1;" (click)="changeLeadStatus(4)">
+                    <ngb-progressbar
+                      [value]="100"
+                      [type]="salesLeadData.leadStatus >= 4 ? 'primary' : 'light'"
+                      height="0.5rem"
+                    ></ngb-progressbar>
+                    <div class="mt-2">Prospect</div>
+                  </div>
+                  <div class="ml-3" style="flex: 1;" (click)="changeLeadStatus(5)">
+                    <ngb-progressbar
+                      [value]="100"
+                      [type]="salesLeadData.leadStatus === 5 ? 'success' : 'light'"
+                      height="0.5rem"
+                    ></ngb-progressbar>
+                    <div class="mt-2">Client</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <div class="text-muted">Last Updated</div>
+                <h6>{{ salesLeadData.updatedAt }}</h6>
+              </div>
+              <div class="mt-3">
+                <div class="text-muted">Created Date</div>
+                <h6>{{ salesLeadData.createdAt }}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title mb-4">Notes or Reminders</h4>
+              <ckeditor [editor]="Editor" data="<p>Content of the editor.</p>"></ckeditor>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+
+    <ng-template #Comments>
+      <div class="mt-4 mb-4">
+        <div class="media">
+          <div class="mr-3">
+            <img class="media-object rounded-circle avatar-xs" alt="" src="assets/images/users/avatar-2.jpg" />
+          </div>
+          <div class="media-body">
+            <h5 class="font-size-13 mb-1">David Lambert</h5>
+            <p class="text-muted mb-1">
+              Separate existence is a myth.
+            </p>
+          </div>
+        </div>
+        <div class="">
+          <a href="javascript: void(0);" class="text-dark">Delete</a>
+        </div>
+      </div>
+      <div>
+        <div class="form-group mb-4">
+          <label>Add a Comment</label>
+          <textarea class="form-control" rows="3" placeholder="Type here"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary pl-5 pr-5">Comment</button>
+      </div>
+    </ng-template>
+    <ng-template #Activities>
+      <div class="mt-4 mb-4">
+        <div class="hori-timeline">
+          Yet to come
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #Attachments>
+      <div class="mt-4 mb-4">
+        <div class="table-responsive">
+          <table class="table table-nowrap table-centered table-hover mb-0">
+            <tbody>
+              <tr>
+                <td style="width: 45px;">
+                  <div class="avatar-sm">
+                    <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-24">
+                      <i class="bx bxs-file-doc"></i>
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <h5 class="font-size-14 mb-1">
+                    <a href="javascript: void(0);" class="text-dark">Landing.Zip</a>
+                  </h5>
+                  <small>Size : 3.25 MB</small>
+                </td>
+                <td>
+                  <div class="text-center">
+                    <a href="javascript: void(0);" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="avatar-sm">
+                    <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-24">
+                      <i class="bx bxs-file-doc"></i>
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <h5 class="font-size-14 mb-1">
+                    <a href="javascript: void(0);" class="text-dark">Admin.Zip</a>
+                  </h5>
+                  <small>Size : 3.15 MB</small>
+                </td>
+                <td>
+                  <div class="text-center">
+                    <a href="javascript: void(0);" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row mb-4 mt-4 pl-4 pr-4">
+          <div class="col-12">
+            <dropzone class="dropzone"></dropzone>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #Incentives>
+      <div class="mt-4 mb-4">
+        <div class="d-flex align-items-center mb-3">
+          <div class="avatar-xs mr-3">
+            <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-15"
+              ><i class="bx bx-money"></i
+            ></span>
+          </div>
+          <p class="text-muted mb-0">Your Incentive</p>
+        </div>
+
+        <div class="row">
+          <div class="col-5">
+            <div class="row">
+              <div class="col-6">
+                <div>
+                  <h5 class="text-success">INR 4000</h5>
+                  <p class="text-muted text-truncate mb-0">
+                    2000 ( 0.2 % ) <i class="mdi mdi-arrow-up ml-1 text-success"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

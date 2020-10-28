@@ -1,0 +1,295 @@
+<div class="container-fluid">
+  <div class="page-title-box d-flex align-items-center justify-content-between">
+    <h4 class="mb-0 font-size-18">BDP Details</h4>
+    <div class="page-title-right">
+      <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item">
+          <a href="javascript: void(0);">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">BDP List</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card overflow-hidden">
+        <div class="bg-primary">
+          <div class="row">
+            <div class="col-12">
+              <div class="text-primary p-3">
+                <h5 class="text-primary" style="color: white !important;">Business Development Partner</h5>
+                <p style="color: white;">{{ bdpDetails.type }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body pt-0">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="avatar-md profile-user-wid mb-4">
+                <img src="assets/images/users/avatar-1.jpg" alt="" class="img-thumbnail rounded-circle" />
+              </div>
+              <a href="">
+                <i class="bx bx-pencil"></i>
+                Edit
+              </a>
+            </div>
+
+            <div class="col-sm-8">
+              <div class="pt-4">
+                <div class="row">
+                  <div class="col-6">
+                    <h5 class="font-size-15">{{ bdpDetails.name }}</h5>
+                    <p class="text-muted mb-0">{{ bdpDetails.designation }}</p>
+                  </div>
+                  <div class="col-6">
+                    <h5 class="font-size-15">{{ bdpDetails.status }}</h5>
+                    <p class="text-muted mb-0">Status</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card overflow-hidden">
+        <div class="card-body">
+          <h5 class="mb-3">Personal Information</h5>
+          <p>
+            {{ bdpDetails.notes }}
+          </p>
+
+          <ul class="pi-list mt-5">
+            <li>
+              <div class="form-group">
+                <label>
+                  Full Name
+                </label>
+                <div class="value">
+                  {{ bdpDetails.name }}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label>
+                  Email
+                </label>
+                <div class="value">
+                  {{ bdpDetails.email }}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label>
+                  Contact Number
+                </label>
+                <div class="value">
+                  {{ bdpDetails.contactNo }}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label>
+                  Alternate Number
+                </label>
+                <div class="value">
+                  {{ bdpDetails.alternateMobile }}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label>
+                  Address Line 1
+                </label>
+                <div class="value">
+                  {{ bdpDetails.addressLine1 }}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label>
+                  Address Line 2
+                </label>
+                <div class="value">
+                  {{ bdpDetails.addressLine2 }}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label>
+                  City
+                </label>
+                <div class="value">
+                  {{ bdpDetails.city }}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label>State </label>
+                <div class="value">
+                  {{ bdpDetails.state }}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label>
+                  Country
+                </label>
+                <div class="value">
+                  {{ bdpDetails.country }}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <label>
+                  Zip Code
+                </label>
+                <div class="value">
+                  {{ bdpDetails.zipCode }}
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="row">
+        <div *ngFor="let stat of statData" class="col-md-4">
+          <div class="card mini-stats-wid">
+            <div class="card-body">
+              <div class="media">
+                <div class="media-body">
+                  <p class="text-muted font-weight-medium">{{ stat.title }}</p>
+                  <h5 class="mb-0">{{ stat.value }}</h5>
+                </div>
+
+                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
+                  <span class="avatar-title">
+                    <i class="bx {{ stat.icon }} font-size-24"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card overflow-hidden">
+        <div class="card-body">
+          <h5 class="mb-3">Account Details</h5>
+          <p>
+            Hi I'm Cynthia Price,has been the industry's standard dummy text To n English person, it will seem like
+            simplified English, as a skeptical
+          </p>
+
+          <div class="row">
+            <div class="col-8">
+              <ul class="pi-list mt-3">
+                <li>
+                  <div class="form-group">
+                    <label>
+                      Bank Account Type
+                    </label>
+                    <div class="value">
+                      {{ bdpDetails.accType }}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <label>
+                      Bank Name
+                    </label>
+                    <div class="value">
+                      {{ bdpDetails.bankName }}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <label>
+                      Account Number
+                    </label>
+                    <div class="value">
+                      {{ bdpDetails.accNumber }}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <label>
+                      IFSC Code
+                    </label>
+                    <div class="value">
+                      {{ bdpDetails.ifscCode }}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <label>
+                      Shift Code
+                    </label>
+                    <div class="value">
+                      {{ bdpDetails.shiftCode }}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <label>
+                      Branch
+                    </label>
+                    <div class="value">
+                      {{ bdpDetails.branchName }}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <label>
+                      Date of Registration
+                    </label>
+                    <div class="value">
+                      {{ bdpDetails.dateOfReg | slice: 0:10 }}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <label>
+                      PAN Number
+                    </label>
+                    <div class="value">
+                      {{ bdpDetails.pan }}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <label>Base Currency</label>
+                    <div class="value">
+                      {{ bdpDetails.baseCurrency | uppercase }}
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

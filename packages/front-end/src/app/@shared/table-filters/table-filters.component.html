@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="filter-option-container card-body">
+    <form class="form-horizontal" name="filterForm" [formGroup]="filterForm" novalidate>
+      <div class="row">
+        <div class="form-group mb-0 col-md-3 col-lg-3" *ngIf="isSearchable">
+          <input
+            type="text"
+            formControlName="searchTicket"
+            class="form-control pb-1"
+            id="search-ticket"
+            placeholder="Search Ticket"
+            autocomplete="off"
+            (keyup)="onSearch(searchModel)"
+          />
+        </div>
+
+        <div class="form-group mb-0 col-md-6 col-lg-3 d-flex align-items-center" *ngIf="sortBy != null">
+          <label class="col-md-3 m-0" for="sort-by">Sort by</label>
+          <select formControlName="sort_by" id="sort-by" name="sortBy" class="form-control">
+            <option value="">Any</option>
+            <option *ngFor="let sort of sortBy" [value]="sort.id">
+              {{ sort.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group mb-0 col-md-6 col-lg-4 d-flex align-items-center" *ngIf="assignedTo != null">
+          <label class="col-md-3 m-0 text-right" for="assigned-to">Assigned to</label>
+          <select formControlName="managed_by" id="assigned-to" name="assignedTo" class="form-control">
+            <option value="">Select</option>
+            <option *ngFor="let assign of assignedTo" [value]="assign.id">
+              {{ assign.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-md-3 col-lg-2 ml-auto">
+          <a href="/sales/create-new-lead" class="btn btn-primary btn-block">
+            Create New Lead
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

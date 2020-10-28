@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "start": "concurrently --kill-others \"npm run start:api\" \"npm run start:web\"",
+    "start:api": "cd packages/back-end && npm start",
+    "start:web": "cd packages/front-end && npm start",
+    "start:api:watch": "cd packages/back-end && npm run build:watch",
+    "api:clean": "cd packages/back-end && npm run clean"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "lerna": "^3.22.1"
+  }
+}

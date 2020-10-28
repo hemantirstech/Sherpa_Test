@@ -1,0 +1,20 @@
+.initial-img {
+  background-color: #81b2e3;
+  color: #fff;
+  line-height: 3rem;
+  text-align: center;
+  font-size: 1.25rem;
+}
+.no-bgc::after {
+  background: unset !important;
+}
+.lead-details .nav-tabs-custom {
+  border: none;
+}
+
+ngb-progressbar > .progress {
+  border-radius: 0 !important;
+}
+.bg-yellow {
+  background-color: #ffec39 !important;
+}

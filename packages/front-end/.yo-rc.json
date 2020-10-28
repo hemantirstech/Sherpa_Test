@@ -1,0 +1,70 @@
+{
+  "generator-ngx-rocket": {
+    "appName": "krsherpa-front",
+    "target": [
+      "web"
+    ],
+    "pwa": true,
+    "mobile": null,
+    "desktop": null,
+    "ui": "bootstrap",
+    "layout": null,
+    "auth": true,
+    "lazy": true,
+    "angulartics": true,
+    "languages": [
+      "en-US"
+    ],
+    "analyticsProvider": "ga",
+    "googleAnalyticsAccount": "",
+    "tools": [
+      "prettier",
+      "hads",
+      "compodoc",
+      "jest"
+    ],
+    "utility": [
+      "lodash",
+      "moment"
+    ],
+    "deploy": "netlify",
+    "version": "8.1.1",
+    "props": {
+      "location": "path",
+      "strict": false,
+      "skipInstall": false,
+      "skipQuickstart": false,
+      "initGit": true,
+      "usePrefix": true,
+      "target": [
+        "web"
+      ],
+      "pwa": true,
+      "ui": "bootstrap",
+      "auth": true,
+      "lazy": true,
+      "angulartics": true,
+      "languages": [
+        "en-US"
+      ],
+      "analyticsProvider": "ga",
+      "googleAnalyticsAccount": "",
+      "tools": [
+        "prettier",
+        "hads",
+        "compodoc",
+        "jest"
+      ],
+      "utility": [
+        "lodash",
+        "moment"
+      ],
+      "deploy": "netlify",
+      "appName": "front-end",
+      "projectName": "front-end",
+      "packageManager": "npm",
+      "mobile": [],
+      "desktop": []
+    }
+  }
+}

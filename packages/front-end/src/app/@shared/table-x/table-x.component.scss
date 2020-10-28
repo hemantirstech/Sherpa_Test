@@ -1,0 +1,50 @@
+.row-card {
+  margin-bottom: 24px;
+  box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+  position: relative;
+  min-width: 0;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid #f6f6f6;
+  border-radius: 0.25rem;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0px 12px;
+}
+thead {
+  background-color: #0c608d;
+  color: #fff;
+}
+.table-bordered th,
+.table-bordered td {
+  border: 0px solid #eff2f7;
+}
+.text-white {
+  color: #fff !important;
+}
+
+.badge {
+  padding: 0.6rem;
+  text-align: center;
+  border-radius: 4px;
+  color: #fff;
+  min-width: 5rem;
+}
+.badge-connected {
+  background-color: #b8b8b8;
+}
+.badge-in-progress {
+  background-color: #f39819;
+}
+.badge-interested {
+  background-color: #439715;
+}
+.table-actions {
+  font-size: 1.2rem;
+}
+.table-actions > div:hover i {
+  color: #556ee6;
+  transform: scale(1.5);
+}

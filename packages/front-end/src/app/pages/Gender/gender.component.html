@@ -1,0 +1,197 @@
+<div class="container-fluid">
+    <app-page-title title="My Contact" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  
+    <div class="d-lg-flex">
+      <div class="card chat-leftsidebar mr-lg-2 contact-card">
+        <div class="">
+          <div class="border-bottom">
+            <button
+              type="button"
+              (click)="showCreateForm = true; genderDetails.id = null"
+              class="btn btn-primary btn-lg btn-block btn-custom mb-4"
+            >
+              Create New
+            </button>
+  
+            <div class="search-box chat-search-box pb-4">
+              <div class="position-relative">
+                <input
+                  type="text"
+                  (input)="filterGender(contactSearch.value)"
+                  #contactSearch
+                  class="form-control contact-search"
+                  placeholder="Search..."
+                />
+              </div>
+            </div>
+  
+            <div class="chat-leftsidebar-nav">
+              <perfect-scrollbar style="position: relative; height: 410px;">
+                <ul class="list-unstyled chat-list">
+                  <li class="" *ngFor="let data of gender">
+                    <a href="javascript: void(0);" (click)="showGender(data.id)">
+                      <div class="media">
+                        <!-- <div class="align-self-center mr-3" *ngIf="data?.image">
+                          <img src="{{ data.image }}" class="rounded-circle avatar-xs" alt="" />
+                        </div>
+                        <div class="avatar-xs align-self-center mr-3" *ngIf="!data?.image">
+                          <span class="avatar-title rounded-circle bg-soft-primary text-primary">
+                            {{ data?.name.charAt(0) }}
+                          </span>
+                        </div> -->
+                        <div class="media-body overflow-hidden">
+                          <h5 class="text-truncate font-size-14 mb-1 text-capitalize">{{ data?.genderTitle }}</h5>
+                          <p class="text-truncate mb-0">{{ data?.genderCode }}</p>
+                          <p class="text-truncate mb-0" *ngIf="!data?.mobile">{{ data?.genderIcon }}</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </perfect-scrollbar>
+            </div>
+  
+            <div class="my-4"></div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="w-100 user-chat">
+        <div class="card contact-card">
+          <div class="alert alert-success" *ngIf="showMessage == true">Gender saved successfully!</div>
+          <div class="alert alert-success" *ngIf="showMessageDelete == true">Gender deleted successfully!</div>
+  
+          <div *ngIf="!showCreateForm" class="row">
+            <div class="col-md-6 col-7">
+              <h5 class="font-size-15 mb-1 title-label text-capitalize d-flex justify-content-between">
+                <div>{{ genderDetails?.id }}</div>
+  
+                <div class="actions">
+                  <span class="text-info pointer" (click)="editGGender(genderDetails)">
+                    <i class="bx bx-door-open"></i>
+                  </span>
+  
+                  <span class="text-danger pointer ml-3" (click)="deleteGender(genderDetails)">
+                    <i class="bx bx-trash"></i>
+                  </span>
+                </div>
+              </h5>
+  
+              <div class="row">
+                <div class="col-md-6 col-7">
+                  <h5 class="font-size-12 mb-1 text-muted-label">Gender Title</h5>
+                  <h5 class="font-size-14 mb-1 text-capitalize">{{ genderDetails?.genderTitle }}</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-3">
+                  <h5 class="font-size-12 mb-1 text-muted-label">Gender Code</h5>
+                  <a href="tel:{{ genderDetails?.genderCode }}" class="font-size-14 mb-1">{{ genderDetails?.genderCode }}</a>
+                </div>
+                <div class="col-md-6 col-3">
+                  <h5 class="font-size-12 mb-1 text-muted-label ml-2">Gender Icon</h5>
+                  <a href="tel:{{ genderDetails?.genderIcon }}" class="font-size-14 mb-1">{{
+                    genderDetails?.genderIcon
+                  }}</a>
+                </div>
+              </div>
+                          
+             
+            </div>
+            <div class="col-md-6 col-3">
+              <h5 class="font-size-15 title-label mb-3">Notes</h5>
+              <div class="notes-container">
+                <div class="font-size-13 mb-1">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                  industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                  scrambled it tomake a type specimen book.
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-md-12 col-3">
+                  <h5 class="font-size-13 mb-2">Add Notes</h5>
+                  <div class="form-group">
+                    <textarea
+                      class="form-control rounded-0"
+                      id="notes-textarea"
+                      rows="5"
+                      placeholder="Type here..."
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-3">
+                  <button type="button" class="btn btn-primary btn-custom">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf="showCreateForm" class="row">
+            <div class="col-md-6 col-7">
+              <form action="" method="post" (ngSubmit)="store()" [formGroup]="formData">
+                <h5 class="font-size-12 mb-1 mt-2 text-muted-label">Gender Title</h5>
+                <input type="hidden" formControlName="id" class="form-control" name="id" />
+                <input
+                  type="text"
+                  formControlName="genderTitle"
+                  class="form-control pb-1"
+                  name="genderTitle"
+                  placeholder="Ex. Male"
+                  autocomplete="off"
+                />
+                <div class="row">
+                  <div class="col-md-12">
+                    <h5 class="font-size-12 mb-1 text-muted-label">Gender Code</h5>
+                    <input
+                      type="text"
+                      formControlName="genderCode"
+                      name="genderCode"
+                      class="form-control pb-1"
+                      placeholder="Ex. 1"
+                      autocomplete="off"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h5 class="font-size-12 mb-1 text-muted-label">Gender Icon</h5>
+                    <input
+                      type="text"
+                      formControlName="genderIcon"
+                      class="form-control pb-1"
+                      name="genderIcon"
+                      placeholder="Ex. Male"
+                      autocomplete="off"
+                    />
+                  </div>                
+                </div>
+               
+            
+               
+              
+                <div class="row">
+                  <div class="col-md-12 text-right mt-4">
+                    <button type="button" (click)="showCreateForm = false" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-custom">Save Gender</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-6 col-3">
+              <h5 class="font-size-15 title-label mb-3">Information:</h5>
+              <div class="notes-container">
+                <div class="font-size-13 mb-1">
+                  The contacts created by you will be only visible to you. No other person can view or access your
+                  contacts.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+  </div>
+  

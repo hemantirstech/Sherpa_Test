@@ -1,0 +1,39 @@
+<div class="filter-option-container card-body">
+  <form class="form-horizontal" name="filterForm" novalidate>
+    <div class="row">
+      <div class="form-group mb-0 col-md-3">
+        <input
+          type="text"
+          name="searchTerm"
+          placeholder="Search Ticket"
+          class="form-control"
+          aria-controls="tickets-table"
+        />
+      </div>
+
+      <div class="form-group mb-0 col-md-6 col-lg-3 d-flex align-items-center">
+        <label class="col-md-3 m-0" for="sort-by">Sort by</label>
+        <select formControlName="sort_by" id="sort-by" name="sortBy" class="form-control">
+          <option value="">Date Modified</option>
+          <option value="1">Latest First</option>
+          <option value="2">Oldest First</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-0 col-md-6 col-lg-4 d-flex align-items-center">
+        <label class="col-md-4 m-0 text-right" for="assigned-to">Assigned to</label>
+        <select formControlName="managed_by" id="assigned-to" name="assignedTo" class="form-control">
+          <option value="">Select</option>
+          <option>Praveer D</option>
+          <option>Shubham Bodade</option>
+        </select>
+      </div>
+
+      <div class="col">
+        <a href="/sales/create-new-lead" class="btn btn-primary btn-block">
+          Create New Lead
+        </a>
+      </div>
+    </div>
+  </form>
+</div>

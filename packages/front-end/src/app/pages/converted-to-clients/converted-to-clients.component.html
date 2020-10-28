@@ -1,0 +1,130 @@
+<div class="container-fluid">
+  <app-page-title title="LEAD HOME" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <app-table-filters></app-table-filters>
+
+      <div>
+        <!-- Table -->
+        <div class="table-responsive">
+          <table
+            id="basic-datatable"
+            class="table table-bordered cards-table dt-responsive nowrap no-footer dtr-inline"
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Contact Name</th>
+                <th>Company Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>Stage</th>
+                <th>Sales Owner</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let table of tables$ | async; let i = index">
+              <tr class="m-2 row-card">
+                <td center>
+                  <input class="" type="checkbox" (change)="changeValue(i)" value="" id="customCheck{{ i }}" />
+                </td>
+                <td>
+                  <div class="row d-flex">
+                    <div _ngcontent-frs-c110="" class="avatar-xs">
+                      <span class="avatar-title rounded-circle bg-soft-primary text-white font-size-14">{{
+                        getNameInitials(table.salesLeadContact.name)
+                      }}</span>
+                    </div>
+                    <div class="ml-3">
+                      <div class="row">
+                        <ngb-highlight
+                          class="font-weight-bold"
+                          [result]="table.salesLeadContact.name"
+                          [term]="service.searchTerm"
+                        ></ngb-highlight>
+                      </div>
+                      <div class="row">
+                        <ngb-highlight
+                          class="font-size-10"
+                          [result]="table.salesLeadContact.designation"
+                          [term]="service.searchTerm"
+                        ></ngb-highlight>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <ngb-highlight [result]="table.companyName" [term]="service.searchTerm"></ngb-highlight>
+                </td>
+                <td>
+                  <ngb-highlight [result]="table.email" [term]="service.searchTerm"></ngb-highlight>
+                </td>
+                <td>
+                  <ngb-highlight [result]="table.contactNo" [term]="service.searchTerm"></ngb-highlight>
+                </td>
+                <td>
+                  <ngb-highlight
+                    class="badge"
+                    [ngClass]="{
+                      'badge-connected': table.leadStatus.toString() === '1',
+                      'badge-interested': table.leadStatus.toString() === '2',
+                      'badge-in-progress': table.leadStatus.toString() === '3',
+                      'badge-prospect': table.leadStatus.toString() === '4',
+                      'badge-client': table.leadStatus.toString() === '5',
+                      'badge-not-interested': table.leadStatus.toString() === '6',
+                      'badge-do-not-call': table.leadStatus.toString() === '7'
+                    }"
+                    [result]="stageStatusDisplay[table.leadStatus]"
+                    [term]="service.searchTerm"
+                  ></ngb-highlight>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div _ngcontent-frs-c108="" class="avatar-xs">
+                      <img
+                        _ngcontent-frs-c108=""
+                        src="assets/images/users/avatar-1.jpg"
+                        alt=""
+                        class="img-thumbnail rounded-circle"
+                      />
+                    </div>
+                    <ngb-highlight [result]="getUserName(table.assigneeId)" [term]="service.searchTerm"></ngb-highlight>
+                  </div>
+                </td>
+                <td>
+                  <div class="table-actions d-flex justify-content-between">
+                    <a href="/sales/update-lead/{{ table.id }}"><i class="mdi mdi-file-document-edit"></i></a>
+                    <a href="/sales/lead-details/{{ table.id }}"><i class="mdi mdi-eye-outline"></i></a>
+                    <!-- <a href="javascript: void(0);"
+                      ><i
+                        (click)="deleteLead(table.id, table.salesLeadContact.id)"
+                        class="mdi mdi-delete-forever-outline"
+                      ></i
+                    ></a> -->
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- End table -->
+        <div class="row justify-content-md-between align-items-md-center mt-2">
+          <!-- Pagination -->
+          <div class="col-sm-12 col-md-5">
+            <div class="text-md-right pagination-rounded">
+              <ngb-pagination [collectionSize]="total$ | async" [(page)]="service.page" [pageSize]="service.pageSize">
+              </ngb-pagination>
+            </div>
+          </div>
+          <!-- End Pagination -->
+          <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info mb-2 float-md-right" id="tickets-table_info" role="status" aria-live="polite">
+              Showing {{ service.startIndex }} to {{ service.endIndex }} of {{ service.totalRecords }}
+              entries
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

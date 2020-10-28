@@ -1,0 +1,12 @@
+.pi-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    min-width: 50%;
+    label {
+      margin-bottom: 5px;
+    }
+  }
+}

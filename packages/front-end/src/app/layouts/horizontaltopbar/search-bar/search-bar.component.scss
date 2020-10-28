@@ -1,0 +1,34 @@
+.search {
+  select {
+    height: 40px;
+    background: #2a3042;
+    color: #e9ecef;
+    border: none;
+    border-right: 1px solid #5f626d;
+    outline: none !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    padding: 0 20px 0 10px;
+    cursor: pointer;
+    option {
+      background: transparent;
+      color: #e9ecef;
+    }
+  }
+
+  input {
+    height: 40px;
+    border: none;
+    background: #2a3042;
+    color: #e9ecef;
+    padding: 5px 20px;
+    min-width: 300px;
+    border-radius: 3px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
